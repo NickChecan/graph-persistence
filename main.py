@@ -37,4 +37,4 @@ memory = MemorySaver()
 graph = builder.compile(checkpointer=memory, interrupt_before=["human_feedback"])
 
 print(graph.get_graph().draw_mermaid())
-graph.get_graph().draw_mermaid_png("graph.png")
+graph.get_graph().draw_mermaid_png(output_file_path="graph.png")
