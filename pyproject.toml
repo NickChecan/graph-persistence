@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "human-in-the-loop"
+version = "0.1.0"
+description = ""
+authors = ["nickchecan <nicholas.checan@icloud.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+langgraph = "^0.2.71"
+langchain-community = "^0.3.17"
+python-dotenv = "^1.0.1"
+black = "^25.1.0"
+isort = "^6.0.0"
+grandalf = "^0.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
