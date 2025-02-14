@@ -2,6 +2,8 @@
 This is a very simple project that shows the setup of a memory mechanism
 for a human-in-the-loop system. 
 
+MemorySaver is an ephemeral tool and does not persist data across sessions, thus the data in this example will be saved in a SQLite database.
+
 ```mermaid
 %%{init: {'flowchart': {'curve': 'linear'}}}%%
 graph TD;
@@ -22,5 +24,8 @@ graph TD;
 ## Utilities
 
 ```sh
-poetry add langgraph langchain-community python-dotenv black isort grandalf
+poetry add langgraph langchain-community python-dotenv black isort grandalf langgraph-checkpoint-sqlite
 ```
+
+> [!NOTE]
+> The DevContainer was added to analyze the `checkpoint.sqlite` content, however, the extensions used in vscode are not compatible with the format being saved in the `checkpoint` and `metadata` columns and the values will be displayed as hex, instead of **JSON**.

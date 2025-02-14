@@ -13,6 +13,7 @@ python-dotenv = "^1.0.1"
 black = "^25.1.0"
 isort = "^6.0.0"
 grandalf = "^0.8"
+langgraph-checkpoint-sqlite = "^2.0.4"
 
 
 [build-system]

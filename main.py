@@ -2,10 +2,11 @@ from dotenv import load_dotenv
 load_dotenv()
 from typing import TypedDict
 from langgraph.graph import StateGraph, START, END
-
 # MemorySaver is a checkpoint which stores the state after each node execution
 # It is ephemeral, which means it will be gone after the execution ends
 from langgraph.checkpoint.memory import MemorySaver
+from langgraph.checkpoint.sqlite import SqliteSaver
+import sqlite3
 
 class State(TypedDict):
     input: str
@@ -31,7 +32,13 @@ builder.add_edge("step_1", "human_feedback")
 builder.add_edge("human_feedback", "step_3")
 builder.add_edge("step_3", END)
 
-memory = MemorySaver()
+# Option 1
+# memory = MemorySaver() # Replace with sqlite3 to persist the state on disk
+# Option 2 - Run this first
+conn = sqlite3.connect("checkpoint.sqlite", check_same_thread=False)
+memory = SqliteSaver(conn)
+# Option 2 - Run this after initialization
+# memory = SqliteSaver.from_conn_string("checkpoint.sqlite")
 
 # The following arguments (checkpointer and interrupt_before) will stop the graph
 # before the "human_feedback" node is executed, checkpoint the state of the graph
